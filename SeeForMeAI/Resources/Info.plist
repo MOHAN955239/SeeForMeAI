@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>SeeForMe AI</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UILaunchScreen</key>
+	<dict/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>SeeForMe AI uses the camera so you can photograph objects, signs, documents, and workplace equipment to have them described or read aloud.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>SeeForMe AI listens only while you tap the microphone button, so you can ask questions by voice.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Speech recognition turns your spoken questions into commands. It runs on-device when your Apple device supports it.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>SeeForMe AI uses your location only when you ask it to announce where you are, find nearby places, get walking directions, or share your location.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>SeeForMe AI reads your upcoming events aloud only when you ask for your calendar or daily briefing.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>SeeForMe AI looks up a contact's phone number only when you ask it to.</string>
+	<key>SCXAPIKey</key>
+	<string>$(SCX_API_KEY)</string>
+	<key>SCXEndpoint</key>
+	<string>$(SCX_ENDPOINT)</string>
+	<key>AnthropicAPIKey</key>
+	<string>$(ANTHROPIC_API_KEY)</string>
+	<key>ElevenLabsAPIKey</key>
+	<string>$(ELEVENLABS_API_KEY)</string>
+	<key>SovereignRegion</key>
+	<string>au-syd-1</string>
+</dict>
+</plist>

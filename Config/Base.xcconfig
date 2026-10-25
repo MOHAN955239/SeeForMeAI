@@ -1,0 +1,6 @@
+// Placeholders only. Put real keys in Config/Secrets.xcconfig (git-ignored) or Settings.
+ANTHROPIC_API_KEY =
+ELEVENLABS_API_KEY =
+SCX_API_KEY =
+SCX_ENDPOINT = https://api.scx.ai/v1/chat/completions
+#include? "Secrets.xcconfig"
