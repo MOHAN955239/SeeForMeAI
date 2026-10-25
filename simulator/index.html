@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SeeForMe AI — Sydney Mobile AI Hackathon Interactive Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="top-nav">
+        <div class="brand">
+            <div class="logo-icon">👁️</div>
+            <div class="brand-text">
+                <h1>SeeForMe AI</h1>
+                <p>Sydney Mobile AI Hackathon — AI On Apple (20 Martin Place)</p>
+            </div>
+        </div>
+        <div class="nav-badges">
+            <span class="badge badge-scx">🇦🇺 SCX Sovereign Cloud (au-syd-1)</span>
+            <span class="badge badge-eleven">🎙️ ElevenLabs Voice (Turbo v2.5)</span>
+            <span class="badge badge-ondevice">⚡ Apple Neural Engine (On-Device)</span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="simulator-container">
+
+        <!-- iPhone 16 Pro Mockup -->
+        <div class="phone-wrapper">
+            <div class="phone-screen">
+                
+                <!-- Dynamic Island -->
+                <div class="dynamic-island">
+                    <span id="islandStatus">Ready</span>
+                    <div class="island-camera"></div>
+                </div>
+
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <span id="currentTime">9:41</span>
+                    <div style="display:flex; gap:6px; align-items:center;">
+                        <span id="wifiIcon">📶</span>
+                        <span>5G</span>
+                        <span>🔋 100%</span>
+                    </div>
+                </div>
+
+                <!-- SwiftUI App Viewport -->
+                <div class="app-viewport" id="appViewport">
+                    
+                    <!-- App Title Header -->
+                    <div class="app-header">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h2>SeeForMe AI</h2>
+                            <span id="demoTag" style="display:none; font-size:10px; font-weight:800; background:rgba(245,158,11,0.2); color:#f59e0b; padding:3px 8px; border-radius:12px;">DEMO</span>
+                        </div>
+                        <p id="appSubtitle">See the world through sound.</p>
+                    </div>
+
+                    <!-- Dual Track Switcher -->
+                    <div class="segmented-control">
+                        <button class="segment-btn active" id="btnModeCommunity" onclick="switchMode('community')">
+                            👥 Community Impact
+                        </button>
+                        <button class="segment-btn" id="btnModeEnterprise" onclick="switchMode('enterprise')">
+                            🏭 Enterprise Audit
+                        </button>
+                    </div>
+
+                    <!-- Status Card -->
+                    <div class="status-card">
+                        <div class="status-card-header">
+                            <div class="status-title">
+                                <div class="status-dot" id="statusDot"></div>
+                                <span id="statusNetwork">Online</span>
+                            </div>
+                            <span id="statusBadge" style="font-size:11px; font-weight:700; color:#60a5fa; background:rgba(96,165,250,0.1); padding:2px 8px; border-radius:10px;">SCX Sydney</span>
+                        </div>
+                        <p class="status-desc" id="statusDesc">
+                            Australian Sovereign Inference via SCX (Sydney). 100% onshore data residency with Foundation Models.
+                        </p>
+                    </div>
+
+                    <!-- Active Result Card (Shows when analysis runs) -->
+                    <div id="resultCard" class="result-card" style="display: none;">
+                        <img id="resultImage" class="result-image-preview" src="" alt="Captured Scene">
+                        <div class="result-summary" id="resultSummary">Scene summary will appear here.</div>
+                        <div class="result-detail" id="resultDetail">Detail observations.</div>
+                        <div class="result-uncertainty" id="resultUncertainty">
+                            <span>ℹ️</span> <span id="uncertaintyText">On-device verification.</span>
+                        </div>
+
+                        <!-- Speaking Waveform -->
+                        <div id="speakingBar" class="speaking-bar" style="display: none;">
+                            <div class="audio-waves">
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                                <div class="wave-bar"></div>
+                            </div>
+                            <span style="font-size:12px; font-weight:600; color:#f59e0b;">Speaking via ElevenLabs Rachel...</span>
+                        </div>
+
+                        <!-- Speech Audio Controls -->
+                        <div style="display:flex; gap:8px; margin-top:4px;">
+                            <button class="big-button" style="flex:1; padding:8px; font-size:12px; justify-content:center;" onclick="repeatSpeech()">🔁 Repeat</button>
+                            <button class="big-button" style="flex:1; padding:8px; font-size:12px; justify-content:center;" onclick="stopSpeech()">⏹️ Stop</button>
+                        </div>
+                    </div>
+
+                    <!-- Actions for Community Track -->
+                    <div id="communityActions" style="display: flex; flex-direction: column; gap: 12px;">
+                        <button class="big-button prominent" onclick="runPreset('sydney-transit')">
+                            <span class="btn-icon">📷</span>
+                            <span>Describe Scene</span>
+                        </button>
+                        <button class="big-button" onclick="runPreset('cafe-menu')">
+                            <span class="btn-icon">📄</span>
+                            <span>Read Text (Offline OCR)</span>
+                        </button>
+                        <button class="big-button" onclick="startVoiceQuestion()">
+                            <span class="btn-icon">🎙️</span>
+                            <span>Ask a Question by Voice</span>
+                        </button>
+                        <div class="button-grid">
+                            <button class="big-button" onclick="runPreset('sydney-transit')">
+                                <span class="btn-icon">🚆</span>
+                                <span>Sydney Transit</span>
+                            </button>
+                            <button class="big-button" onclick="runPreset('aud-note')">
+                                <span class="btn-icon">💵</span>
+                                <span>AUD Banknotes</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Actions for Enterprise Track -->
+                    <div id="enterpriseActions" style="display: none; flex-direction: column; gap: 12px;">
+                        <button class="big-button prominent" onclick="runPreset('gauge-reader')">
+                            <span class="btn-icon">⏱️</span>
+                            <span>Gauge & Meter Reader</span>
+                        </button>
+                        <button class="big-button" onclick="runPreset('ppe-audit')">
+                            <span class="btn-icon">🦺</span>
+                            <span>PPE & Safety Audit (WHS)</span>
+                        </button>
+                        <button class="big-button" onclick="runPreset('asset-tag')">
+                            <span class="btn-icon">🏷️</span>
+                            <span>Machinery Asset Tag</span>
+                        </button>
+                        <button class="big-button" onclick="runPreset('logistics-manifest')">
+                            <span class="btn-icon">📦</span>
+                            <span>Shipping Manifest Audit</span>
+                        </button>
+                    </div>
+
+                    <!-- Footnote -->
+                    <p style="font-size:11px; color:#64748b; text-align:center; margin-top:auto; padding-top:14px;">
+                        SeeForMe AI provides assistive descriptions. Never rely on it for obstacle safety or clinical decisions.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Control Deck for Judges & Stage Demo -->
+        <div class="control-deck">
+            
+            <div class="deck-section">
+                <h3>🎮 Live Stage Demo Presets</h3>
+                <p style="font-size:0.8rem; color:var(--text-secondary); margin-bottom:12px;">
+                    Trigger deterministic high-impact test scenes used in the 90-second stage pitch:
+                </p>
+                <div class="preset-grid">
+                    <button class="preset-btn" onclick="runPreset('sydney-transit')">
+                        <span>🚆 Sydney Transit & Opal</span>
+                        <span class="preset-subtitle">Platform 2 at Martin Place</span>
+                    </button>
+                    <button class="preset-btn" onclick="runPreset('aud-note')">
+                        <span>💵 Australian $20 Note</span>
+                        <span class="preset-subtitle">Polymer note with tactile dots</span>
+                    </button>
+                    <button class="preset-btn" onclick="runPreset('gauge-reader')">
+                        <span>⏱️ Industrial Pressure Gauge</span>
+                        <span class="preset-subtitle">4.2 bar WHS audit</span>
+                    </button>
+                    <button class="preset-btn" onclick="runPreset('ppe-audit')">
+                        <span>🦺 Workplace PPE Audit</span>
+                        <span class="preset-subtitle">High-vis vests & safety glasses</span>
+                    </button>
+                    <button class="preset-btn" onclick="runPreset('cafe-menu')">
+                        <span>☕ Printed Sydney Cafe Menu</span>
+                        <span class="preset-subtitle">100% On-device OCR</span>
+                    </button>
+                    <button class="preset-btn" onclick="triggerCustomUpload()">
+                        <span>📷 Upload Custom Photo</span>
+                        <span class="preset-subtitle">Test any image live</span>
+                    </button>
+                </div>
+                <input type="file" id="customFileInput" accept="image/*" style="display:none;" onchange="handleCustomFile(event)">
+            </div>
+
+            <div class="deck-section">
+                <h3>⚙️ Intelligence & Voice Configuration</h3>
+                
+                <div class="deck-select-group">
+                    <label>AI Vision Engine Provider</label>
+                    <select class="deck-select" id="providerSelect" onchange="updateProvider()">
+                        <option value="scx">SCX Sovereign AI Cloud (Sydney au-syd-1)</option>
+                        <option value="ondevice">Apple On-Device Neural Engine (100% Offline)</option>
+                        <option value="claude">Anthropic Claude Vision (Fallback)</option>
+                    </select>
+                </div>
+
+                <div class="deck-select-group">
+                    <label>ElevenLabs Voice Persona</label>
+                    <select class="deck-select" id="voiceSelect" onchange="updateVoice()">
+                        <option value="rachel">Rachel — Gentle, calm VoiceOver narration</option>
+                        <option value="antoni">Antoni — Crisp, precise for Enterprise audits</option>
+                        <option value="adam">Adam — Deep, authoritative narrator</option>
+                        <option value="bella">Bella — Warm, friendly assistant</option>
+                    </select>
+                </div>
+
+                <div style="display:flex; gap:10px;">
+                    <button class="deck-action-btn" onclick="testVoiceAudio()">
+                        <span>🔊 Test Voice Output</span>
+                    </button>
+                    <button class="deck-action-btn" id="btnToggleOffline" onclick="toggleOfflineMode()">
+                        <span>✈️ Toggle Airplane Mode</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="deck-section">
+                <h3>🏆 Judging Criteria Coverage</h3>
+                <ul style="font-size:0.8rem; color:var(--text-secondary); line-height:1.6; padding-left:18px;">
+                    <li><strong>Innovation:</strong> Dual-track on-device + sovereign cloud multimodal assistant.</li>
+                    <li><strong>Technical Craft:</strong> Multiplatform Apple architecture with SCX Foundation Models and ElevenLabs Turbo v2.5.</li>
+                    <li><strong>Impact:</strong> Solves everyday Australian blind accessibility & enterprise field safety.</li>
+                    <li><strong>Live Demo:</strong> Zero risk, real audio feedback, and deterministic stage execution.</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
