@@ -1,6 +1,10 @@
 # SeeForMe AI — *See the World Through Sound.*
 ### 🇦🇺 Built for the Sydney Mobile AI Hackathon (AI On Apple — Sydney)
 
+<p align="center">
+  <img src="docs/assets/hero_banner.jpg" alt="SeeForMe AI Banner" width="100%">
+</p>
+
 > **Sovereign Multimodal AI Assistant for Apple Platforms**  
 > Empowering Blind & Low-Vision Accessibility and Enterprise Workplace Safety with **Apple On-Device Intelligence**, **SCX Sovereign Cloud Inference**, and **ElevenLabs Conversational Voice AI**.
 

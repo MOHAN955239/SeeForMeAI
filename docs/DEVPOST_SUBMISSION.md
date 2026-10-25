@@ -1,5 +1,9 @@
 # Devpost Submission: SeeForMe AI
 
+<p align="center">
+  <img src="assets/hero_banner.jpg" alt="SeeForMe AI Banner" width="100%">
+</p>
+
 **Tagline:** Sovereign Multimodal AI Assistant for Apple Platforms — Empowering Blind Accessibility & Enterprise Workplace Safety with On-Device Intelligence, SCX Sovereign Cloud, and ElevenLabs Voice AI.
 
 ---
